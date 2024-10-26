@@ -114,7 +114,7 @@
             border: 1px solid #6B46C1;
             color: #6B46C1;
         }
-        /* Section styles */
+        
         section {
             padding: 5rem 0;
         }
@@ -252,6 +252,62 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+         .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .modal h2 {
+            margin-bottom: 1rem;
+            color: #6B46C1;
+        }
+        .modal-close {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.25rem;
+        }
+        .modal-footer {
+            margin-top: 1rem;
+            text-align: right;
+        }
+        .switch-form {
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body>
@@ -281,7 +337,7 @@
                     <a href="#features">Features</a>
                     <a href="#testimonials">Testimonials</a>
                     <a href="#pricing">Pricing</a>
-                    <a href="#" class="button button-outline">Log In</a>
+                    <a href="login.html" class="button button-outline">Log In</a>
                     <a href="#" class="button button-primary">Sign Up</a>
                 </nav>
             </div>
@@ -400,6 +456,57 @@
             </div>
         </div>
     </footer>
+     <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <h2>Log In</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="button button-primary">Log In</button>
+                </div>
+            </form>
+            <div class="switch-form">
+                Don't have an account? <a href="#" id="switchToSignup">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+  <!-- Signup Modal -->
+    <div class="modal-overlay" id="signupModal">
+        <div class="modal">
+            <button class="modal-close">&times;</button>
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="button button-primary">Sign Up</button>
+                </div>
+            </form>
+            <div class="switch-form">
+                Already have an account? <a href="#" id="switchToLogin">Log in</a>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Sticky header
@@ -424,6 +531,67 @@
 
         menuClose.addEventListener('click', () => {
             mobileMenu.classList.remove('open');
+        });
+         const loginBtn = document.querySelector('.button-outline');
+        const signupBtn = document.querySelector('.button-primary');
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        const switchToSignup = document.getElementById('switchToSignup');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const closeBtns = document.querySelectorAll('.modal-close');
+
+        function openModal(modal) {
+            modal.style.display = 'flex';
+        }
+
+        function closeModal(modal) {
+            modal.style.display = 'none';
+        }
+
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(loginModal);
+        });
+
+        signupBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(signupModal);
+        });
+
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal(loginModal);
+            openModal(signupModal);
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal(signupModal);
+            openModal(loginModal);
+        });
+
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                closeModal(loginModal);
+                closeModal(signupModal);
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) closeModal(loginModal);
+            if (e.target === signupModal) closeModal(signupModal);
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add login logic here
+            console.log('Login submitted');
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add signup logic here
+            console.log('Signup submitted');
         });
     </script>
 </body>
