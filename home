@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Mind - Empower Your Mind, Elevate Your Life</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #FAF5FF, #FFFFFF);
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        /* Header styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 0.3s;
+            padding: 1rem 0;
+        }
+        header.sticky {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 0.5rem 0;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6B46C1;
+            text-decoration: none;
+        }
+        nav {
+            display: none;
+        }
+        nav a {
+            color: #4A5568;
+            text-decoration: none;
+            margin-left: 2rem;
+        }
+        nav a:hover {
+            color: #6B46C1;
+        }
+        .header-buttons {
+            display: none;
+        }
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* Mobile menu styles */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 40;
+            background-color: white;
+            display: none;
+        }
+        .mobile-menu.open {
+            display: block;
+        }
+        .mobile-menu-content {
+            padding: 2rem 1rem;
+        }
+        .mobile-menu-close {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+        }
+        .mobile-nav a {
+            font-size: 1.25rem;
+            color: #4A5568;
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+        /* Button styles */
+        .button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button-primary {
+            background-color: #6B46C1;
+            color: white;
+        }
+        .button-outline {
+            border: 1px solid #6B46C1;
+            color: #6B46C1;
+        }
+        /* Section styles */
+        section {
+            padding: 5rem 0;
+        }
+        .hero {
+            padding-top: 8rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #1A202C;
+            margin-bottom: 1.5rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: #4A5568;
+            margin-bottom: 2rem;
+        }
+        .features {
+            background-color: white;
+        }
+        .features h2, .testimonials h2 {
+            font-size: 2rem;
+            color: #1A202C;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .feature-grid, .testimonial-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        .feature-card, .testimonial-card {
+            background-color: #FAF5FF;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .feature-card h3 {
+            font-size: 1.25rem;
+            color: #1A202C;
+            margin-bottom: 0.5rem;
+        }
+        .feature-card p, .testimonial-card p {
+            color: #4A5568;
+        }
+        .testimonials {
+            background-color: #FAF5FF;
+        }
+        .testimonial-card {
+            background-color: white;
+        }
+        .testimonial-author {
+            font-weight: bold;
+            color: #6B46C1;
+        }
+        .cta {
+            background-color: #6B46C1;
+            color: white;
+            text-align: center;
+        }
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .cta p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .cta-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .cta-form input {
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: none;
+        }
+        footer {
+            background-color: #1A202C;
+            color: white;
+            padding: 3rem 0;
+        }
+        .footer-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        .footer-section h3, .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-section a {
+            color: #A0AEC0;
+            text-decoration: none;
+        }
+        .footer-section a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #2D3748;
+            text-align: center;
+            color: #A0AEC0;
+        }
+        /* Responsive styles */
+        @media (min-width: 768px) {
+            nav, .header-buttons {
+                display: flex;
+            }
+            .menu-toggle {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            .feature-grid, .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cta-form {
+                flex-direction: row;
+            }
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .feature-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Bright Mind</a>
+                <nav>
+                    <a href="#features">Features</a>
+                </nav>
+                <div class="header-buttons">
+                    <a href="#" class="button button-outline">Log In</a>
+                    <a href="#" class="button button-primary">Sign Up</a>
+                </div>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="container">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-close">
+                    <button class="menu-toggle" id="menuClose">✕</button>
+                </div>
+                <nav class="mobile-nav">
+                    <a href="#features">Features</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#" class="button button-outline">Log In</a>
+                    <a href="#" class="button button-primary">Sign Up</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Empower Your Mind, Elevate Your Life</h1>
+                <p>Bright Mind is your personal guide to mental wellness, offering tailored support and resources to help you thrive.</p>
+                <a href="#" class="button button-primary">Start Your Journey</a>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Discover Bright Mind's Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Personalized Dashboard</h3>
+                        <p>Track your mood, set goals, and visualize your progress with our intuitive dashboard.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Community Support</h3>
+                        <p>Connect with peers, join support groups, and share experiences in a safe environment.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Resource Library</h3>
+                        <p>Access a wealth of articles, guided meditations, and self-help exercises.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Professional Guidance</h3>
+                        <p>Connect with licensed therapists and attend expert-led workshops.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Self-Help Tools</h3>
+                        <p>Utilize our mood diary and coping strategies toolkit tailored to your needs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Adaptive Learning</h3>
+                        <p>Receive personalized recommendations based on your engagement and feedback.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2>What Our Users Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p>"Bright Mind has been a game-changer for my mental health journey. The personalized approach and supportive community have made all the difference."</p>
+                        <p class="testimonial-author">- Sarah K.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"As a therapist, I recommend Bright Mind to my clients. It's an excellent complement to traditional therapy, providing daily support and valuable resources."</p>
+                        <p class="testimonial-author">- Dr. Michael Chen</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"The guided meditations and mood tracking features have helped me manage my anxiety like never before. I feel more in control of my mental well-being."</p>
+                        <p class="testimonial-author">- Alex T.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Brighten Your Mind?</h2>
+                <p>Join thousands of users who have transformed their mental wellness journey with Bright Mind.</p>
+                <form class="cta-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="button button-primary">Get Started</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Bright Mind</h3>
+                    <p>Empowering mental wellness through technology and community.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#">Personalized Dashboard</a></li>
+                        <li><a href="#">Community Support</a></li>
+                        <li><a href="#">Resource Library</a></li>
+                        <li><a href="#">Professional Guidance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bright Mind. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky header
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 0) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            
+            mobileMenu.classList.add('open');
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+    </script>
+</body>
+</html>
