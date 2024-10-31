@@ -47,72 +47,24 @@
                     <div class="address-grid">
                         <div class="form-group">
                             <label class="form-label">Region</label>
-                            <select class="form-select" required>
-                                <option value="">Select Region</option>
-                                <option value="ncr">NCR – National Capital Region</option>
-                                <option value="region1">Region I – Ilocos Region</option>
-                                <option value="region2">Region II – Cagayan Valley</option>
-                                <option value="region3">Region III – Central Luzon</option>
-                                <option value="region4a">Region IV-A – CALABARZON</option>
-                                <option value="mimaropa">MIMAROPA Region</option>
-                                <option value="region5">Region V – Bicol Region</option>
-                                <option value="region6">Region VI – Western Visayas</option>
-                                <option value="region7">Region VII – Central Visayas</option>
-                                <option value="region8">Region VIII – Eastern Visayas</option>
-                                <option value="region9">Region IX – Zamboanga Peninsula</option>
-                                <option value="region10">Region X – Northern Mindanao</option>
-                                <option value="region11">Region XI – Davao Region</option>
-                                <option value="region12">Region XII – SOCCSKSARGEN</option>
-                                <option value="region13">Region XIII – Caraga</option>
-                                <option value="car">CAR – Cordillera Administrative Region</option>
-                                <option value="barmm">BARMM – Bangsamoro Autonomous Region in Muslim Mindanao</option>tion>
-                            </select>
+                        
+                                <option value="region3" selected>Region III – Central Luzon</option>
+                           
                         </div>
                         <div class="form-group">
                             <label class="form-label">Province</label>
-                            <select class="form-select" required>
-                                <option value="">Select Province</option>
-                                <option value="aurora">Aurora</option>
-                                <option value="bataan">Bataan</option>
-                                <option value="bulacan">Bulacan</option>
-                                <option value="nueva-ecija">Nueva Ecija</option>
-                                <option value="pampanga">Pampanga</option>
-                                <option value="tarlac">Tarlac</option>
-                                <option value="zambales">Zambales</option>                    
-                            </select>
+                            
+                                <option value="nueva-ecija" selected>Nueva Ecija</option>
+                            
                         </div>
+                    
                     </div>
                     <div class="address-grid">
                         <div class="form-group">
                             <label class="form-label">City/Municipality</label>
-                            <select class="form-select" required>
-                                <option value="">Select City</option>
-                                <option value="aliaga">Aliaga</option>
-                                <option value="bongabon">Bongabon</option>
-                                <option value="cabiao">Cabiao</option>
-                                <option value="carranglan">Carranglan</option>
-                                <option value="cuyapo">Cuyapo</option>
-                                <option value="gabaldon">Gabaldon</option>
-                                <option value="jaen">Jaen</option>
-                                <option value="laur">Laur</option>
-                                <option value="licab">Licab</option>
-                                <option value="llanera">Llanera</option>
-                                <option value="lupao">Lupao</option>
-                                <option value="nampicuan">Nampicuan</option>
-                                <option value="pantabangan">Pantabangan</option>
-                                <option value="peñaranda">Peñaranda</option>
-                                <option value="quezon">Quezon</option>
-                                <option value="rizal">Rizal</option>
-                                <option value="san-antonio">San Antonio</option>
-                                <option value="san-isidro">San Isidro</option>
-                                <option value="san-leonardo">San Leonardo</option>
-                                <option value="santa-rosa">Santa Rosa</option>
-                                <option value="santo-domingo">Santo Domingo</option>
-                                <option value="talavera">Talavera</option>
-                                <option value="talugtug">Talugtug</option>
-                                <option value="zaragoza">Zaragoza</option>
+                            
+                                <option value="guimba">Guimba</option>
                                 
-                            </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Barangay</label>
@@ -383,7 +335,6 @@
     </script>
 </body>
 </html>
-
 
 
 :root {
